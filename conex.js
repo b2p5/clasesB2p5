@@ -3,6 +3,7 @@ class Conex{
     constructor(url){
 
         this.url            = url;
+        this.respuesta      = Array();
 
     }
 
@@ -103,8 +104,8 @@ class Conex{
                            });
     
         }// fin de for (var i=0; i<res.data
-
-        return resTxsBlock
+    
+        this.respuesta = resTxsBlock;
     
     }// fin de getTxsBlock
 
