@@ -2,11 +2,12 @@
 /////////////////////////////////////////////////////////////////////////
 
 class Heuristic  {
+  
    constructor(){
       this.tipo      = 1 ;
       this.inputs    = Array();
       this.out       = Array();
-      this.esOk     = false;
+      this.esOk      = false;
     }
 
     
@@ -31,6 +32,8 @@ class Heuristic  {
             
         }//fin de if(lengInputs == 1 && lengOut
 
-    }// fin de reutilizaDirecciones
+    }// fin de async reutilizaDirecciones
+
+
 
 }// fin de class Heuristic
