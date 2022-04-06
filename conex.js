@@ -7,7 +7,7 @@ class Conex{
 
     }
 
-
+    
     async getTxUnConf () {
 
         let urlTxsUnConfir          = 'https://blockchain.info/unconfirmed-transactions?format=json';
@@ -54,6 +54,7 @@ class Conex{
                         time:           res.data.time,
                      });
     
+        this.respuesta = res;
 
         return resBlock
     
@@ -116,7 +117,22 @@ class Conex{
       
         this.url                = urlLastBlock;
         
-        let res                 = await axios.get( this.url );
+        let res                 = await axios.get( this.url )
+                                    // .then((response) => {
+                                    //     return response.data;  
+                                    //   })
+                                    // .catch(function (error) {
+                                    //     if (error.response) {
+                                    //       console.log(error.response.data);
+                                    //       console.log(error.response.status);
+                                    //       console.log(error.response.headers);
+                                    //     } else if (error.request) {
+                                    //       console.log(error.request);
+                                    //     } else {
+                                    //       console.log('Error', error.message);
+                                    //     }
+                                    //     return false;
+                                    //   });
 
         return res.data;
 
