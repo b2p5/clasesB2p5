@@ -1,0 +1,71 @@
+class divideCanvas  {
+
+   constructor(){
+
+       //Tipo de division rectangulo horizontal, vertical, circulo
+      this.tipoDivision     = 'franjaHorizontal';
+
+      this.numeroDivisiones = 10;
+      this.altoCadaDiv      = 0;
+      this.separacion       = 4;
+
+      //Canvas
+      this.realCanvas       = {'ancho': 600, 'alto': 500 };
+
+      //Margenes
+      this.margenes         = {'izq': 20, 'der': 20, 'sup': 20, 'inf': 20};
+
+      //Array de resultados
+      this.resulCanvas      = Array();
+      this.resulMargenes    = Array();
+      this.resulAreas       = Array();
+
+    }//fin constructor
+
+
+    //Método ...
+    dividirEnAreas(){
+      if(this.tipoDivision == 'franjaHorizontal'){
+        this.resulCanvas.push({
+                                  'x'    : 0  , 
+                                  'y'    : 0  ,
+                                  'ancho': this.realCanvas.ancho , 
+                                  'alto' : this.realCanvas.alto,
+        });
+        
+        var anchoConMargen   = this.realCanvas.ancho - this.margenes.izq - this.margenes.der;
+        var altoConMargen    = this.realCanvas.alto  - this.margenes.sup - this.margenes.inf;
+        
+        this.resulMargenes.push({
+                                  'x'    : this.margenes.izq  , 
+                                  'y'    : this.margenes.sup  ,
+                                  'ancho': anchoConMargen, 
+                                  'alto' : altoConMargen,
+        });
+
+
+        var anchoAreas   = anchoConMargen - 2 * this.separacion;
+        var altoAreas    = altoConMargen  - 2 * this.separacion;;
+        
+        var altoCadaDiv = int(altoAreas/this.numeroDivisiones);
+    
+        this.resultado        = Array();
+        for(let i=1; i<=this.numeroDivisiones; i++) {
+          this.resulAreas.push({
+                                'x'    : this.separacion + this.margenes.izq , 
+                                'y'    : this.separacion + this.margenes.sup + (i-1) * altoCadaDiv,
+                                'ancho': anchoAreas , 
+                                'alto' : altoCadaDiv,
+                              });
+
+        }// fin de for(let i=1; i<=this.numeroDivisiones;
+          
+      }//fin  if(this.tipoDivision == 'franjaHorizontal'
+
+      return [this.resulCanvas , this.resulMargenes, this.resulAreas];
+
+
+    }//fin dividirEnAreas
+
+
+}// fin de class divideCanvas
