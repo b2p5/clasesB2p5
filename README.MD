@@ -9,3 +9,7 @@ Clases para la aplicación b2p5 ( Blockchain to P5.JS )
 * Clase generaExcel.js contiene los métodos para generak un Excel de las transaciones.
 
 * Clase bolas.js contiene los métodos para representar las transaciones.
+
+## Auxiliares
+
+* Clase divideCanvas.js crea divisiones por áreas en el canvas
