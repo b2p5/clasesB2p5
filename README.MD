@@ -13,3 +13,5 @@ Clases para la aplicación b2p5 ( Blockchain to P5.JS )
 ## Auxiliares
 
 * Clase divideCanvas.js crea divisiones por áreas en el canvas
+
+* Clase rellenaAreas.js rellena un área con objetos - bolas

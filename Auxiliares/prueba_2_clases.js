@@ -12,9 +12,12 @@ function setup(){
    altoTrabajo  = windowHeight - 20;
 
    createCanvas(anchoTrabajo , altoTrabajo);
-   background(255);
+   background(255);altoTrabajo
 
    miRellenaArea   = new rellenaArea();
+   miRellenaArea.xyRectangulo.x2 = anchoTrabajo - 10;
+   miRellenaArea.xyRectangulo.y2 = altoTrabajo  - 10;
+   
 
    //Inicializa
    objetosAColocar = miRellenaArea.init();
@@ -27,9 +30,15 @@ function setup(){
         miRellenaArea.xyRectangulo.y2 - miRellenaArea.xyRectangulo.y1);
 
    //Coloca objetos
+   var start = Date.now();
+       
    todosLosObjetos   = miRellenaArea.rellenando();
    objetosColocados  = todosLosObjetos[0];
    objetosSinColocar = todosLosObjetos[1];
+
+
+   var end = Date.now();
+   console.log((end - start)/1000);
 
    
    //Objetos colocados
@@ -67,7 +76,8 @@ function setup(){
    //          );
 
    // }// fin de for(let i=0; i<objetosSinColocar.le
-     
+  console.log('objetosSinColocar: ', objetosSinColocar);
+         
    noLoop(); 
    
 
