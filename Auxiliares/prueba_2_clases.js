@@ -21,7 +21,6 @@ function setup(){
 
    //Inicializa
    objetosAColocar = miRellenaArea.init();
-// console.log(objetosAColocar);
     
    stroke(0,255, 255);
    strokeWeight(5);
@@ -29,14 +28,15 @@ function setup(){
         miRellenaArea.xyRectangulo.x2 - miRellenaArea.xyRectangulo.x1 , 
         miRellenaArea.xyRectangulo.y2 - miRellenaArea.xyRectangulo.y1);
 
-   //Coloca objetos
+   //Tiempo ini de proceso
    var start = Date.now();
-       
+
+   //Coloca objetos
    todosLosObjetos   = miRellenaArea.rellenando();
    objetosColocados  = todosLosObjetos[0];
    objetosSinColocar = todosLosObjetos[1];
 
-
+   //Tiempo fin de proceso
    var end = Date.now();
    console.log((end - start)/1000);
 
@@ -76,21 +76,18 @@ function setup(){
    //          );
 
    // }// fin de for(let i=0; i<objetosSinColocar.le
-  console.log('objetosSinColocar: ', objetosSinColocar);
+
+
+   console.log('objetosSinColocar: ', objetosSinColocar);
          
    noLoop(); 
-   
-
-    
 
 }//fin function setup(
 
 
+
+
 function draw(){
-
-   
-
-   
 
 
 }//fin function draw(

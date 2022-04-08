@@ -30,7 +30,7 @@ class rellenaArea  {
         this.arrContenidos.push (  random( 20, 70) );
         // this.arrContenidos.push (  20 );                   //Radio fijo
         // this.arrContenidos.push (randn_bm( 2, 170, 1) );   //Radio dist. gaussiana
-        
+
       }// fin de for (let i= 
       
       // this.arrContenidos.sort().reverse();
@@ -171,6 +171,8 @@ class rellenaArea  {
 }// fin de class rellenaArea
 
 
+
+
 /////////////////////////////////////////////////////////////
 // Funciones
 /////////////////////////////////////////////////////////////
@@ -178,6 +180,7 @@ class rellenaArea  {
 //Random con distribución gausiana
 /////////////////////////////////////////////////////////////
 function randn_bm(min, max, skew) {
+
   let u = 0, v = 0;
   while(u === 0) u = Math.random() //Converting [0,1) to (0,1)
   while(v === 0) v = Math.random()
@@ -192,5 +195,6 @@ function randn_bm(min, max, skew) {
     num *= max - min // Stretch to fill range
     num += min // offset to min
   }
-  return num
+  return num;
+
 }//fin de function randn_bm(min, max, skew)
