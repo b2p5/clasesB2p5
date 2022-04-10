@@ -30,12 +30,8 @@ function setup(){
    //Inicializa objetos  
    miChocaObjetos.initObjetos();
 
-// console.log(miChocaObjetos.arrObjetos);
-    
-   miChocaObjetos.muestraObjetos(miChocaObjetos);
 
-
-frameRate(5);    
+   frameRate(10);    
 
 }//fin function setup(
 
@@ -57,27 +53,19 @@ function draw(){
         miChocaObjetos.realCanvas.ancho , 
         miChocaObjetos.realCanvas.alto);
     
-    //Margenes
-    stroke(255,0, 255);
-    strokeWeight(3);
-    rect (miChocaObjetos.margenes.izq, 
-          miChocaObjetos.margenes.sup, 
-          miChocaObjetos.realCanvas.ancho - miChocaObjetos.margenes.izq - miChocaObjetos.margenes.der ,
-          miChocaObjetos.realCanvas.alto  - miChocaObjetos.margenes.sup - miChocaObjetos.margenes.inf );
+    // //Margenes
+    // stroke(255,0, 255);
+    // strokeWeight(3);
+    // rect (miChocaObjetos.margenes.izq, 
+    //       miChocaObjetos.margenes.sup, 
+    //       miChocaObjetos.realCanvas.ancho - miChocaObjetos.margenes.izq - miChocaObjetos.margenes.der ,
+    //       miChocaObjetos.realCanvas.alto  - miChocaObjetos.margenes.sup - miChocaObjetos.margenes.inf );
 
-
-    // miChocaObjetos.muestraObjetos(miChocaObjetos);
 
 
     miChocaObjetos.mueveObjetos(miChocaObjetos);
 
-    
-    
-    
-    // end = Date.now();
-    // console.log((end - start)/1000 , ' segundos.');
 
-    // noLoop();
         
 }//fin function draw(
 
@@ -91,3 +79,10 @@ function windowResized() {
 
 }//fin function windowResized
 
+
+    // end = Date.now();
+    // console.log((end - start)/1000 , ' segundos.');
+
+    // noLoop();
+
+    //    miChocaObjetos.muestraObjetos(miChocaObjetos);

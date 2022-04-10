@@ -13,6 +13,7 @@ class chocaObjetos  {
     this.distancia ;
     this.pendiente ;
     this.velocidad            = 4;
+    this.cuantosChoques       = 0;
 
     //Array de contenidos
     this.arrObjetos           = Array();
@@ -26,13 +27,13 @@ class chocaObjetos  {
   initObjetos(){
     this.arrObjetos = Array();
 
-    for(let i=0; i< 250 ; i++) {
+    for(let i=0; i< 350 ; i++) {
       
       this.arrObjetos.push ({
                               'objeto'  : i , 
                               'x'       : random( this.margenes.izq + 30,  this.realCanvas.ancho - this.margenes.der - 30), 
                               'y'       : random( this.margenes.sup + 30,  this.realCanvas.alto  - this.margenes.inf - 30) , 
-                              'radiox2' : random( 5, 60) ,
+                              'radiox2' : random( 15, 60) ,
       } );
 
     }// fin de for (let i= 0; i< 1000 ; i++
@@ -41,32 +42,11 @@ class chocaObjetos  {
   }//fin initObjetos
 
   
-
-  //Método prepara ....
-  /////////////////////////////////////////////////////////////
-  muestraObjetos(miChocaObjetos){ 
-
-
-    for(let i=0; i < miChocaObjetos.arrObjetos.length; i++) {  
-         
-      stroke(0,255, 0);
-    
-      ellipse(  miChocaObjetos.arrObjetos[i].x, 
-                miChocaObjetos.arrObjetos[i].y, 
-                miChocaObjetos.arrObjetos[i].radiox2, 
-                miChocaObjetos.arrObjetos[i].radiox2);
-
-
-    }//fin for(let i=0; i < miChocaObjetos.arrObjetos.length; 
-
-
-  }//fin muestraObjetos
-
-
-
   //Método prepara ....
   /////////////////////////////////////////////////////////////
   mueveObjetos(miChocaObjetos){ 
+
+    this.cuantosChoques       = 0;
 
     for(let i=0; i < miChocaObjetos.arrObjetos.length; i++) {  
       
@@ -79,17 +59,22 @@ class chocaObjetos  {
                                           miChocaObjetos.arrObjetos[i].radiox2, 
                                           miChocaObjetos.arrObjetos[j].radiox2, );
         
+        //Si han chocado                                          
         if (this.distancia < 0){
 
           this.pendiente = createVector(
                               miChocaObjetos.arrObjetos[i].x - miChocaObjetos.arrObjetos[j].x,
                               miChocaObjetos.arrObjetos[i].y - miChocaObjetos.arrObjetos[j].y
-                            ).normalize();
+                            );
 
-          miChocaObjetos.arrObjetos[i].x += this.pendiente.x * this.velocidad;
-          miChocaObjetos.arrObjetos[i].y += this.pendiente.y * this.velocidad;
-          miChocaObjetos.arrObjetos[j].x -= this.pendiente.x * this.velocidad;
-          miChocaObjetos.arrObjetos[j].y -= this.pendiente.y * this.velocidad;
+          this.pendiente = this.pendiente.normalize().mult(this.velocidad);
+
+          miChocaObjetos.arrObjetos[i].x += this.pendiente.x ;
+          miChocaObjetos.arrObjetos[i].y += this.pendiente.y ;
+          miChocaObjetos.arrObjetos[j].x -= this.pendiente.x ;
+          miChocaObjetos.arrObjetos[j].y -= this.pendiente.y ;
+
+          this.cuantosChoques++;
 
         }//fin if (distancia < 0
 
@@ -109,10 +94,21 @@ class chocaObjetos  {
       
     }//fin for(let i=0; i < miChocaObjetos.arrObjetos.length; 
 
+    //Regular velocidad con nº choques
+    if(this.cuantosChoques > 20){
+      frameRate(20);
+    }else if(this.cuantosChoques > 10){
+      frameRate(10);
+    }else  {
+      frameRate(5);
+    }
 
   }//fin mueveObjetos(miChocaObjetos
 
 
+  //Checkea choque con los bordes
+  //  /home/fsantagonza/Desarrollo/00-web3/0-2-p5js/the-nature-of-code/codigo/chp02_forces/NOC_2_01_forces/mover.js
+  /////////////////////////////////////////////////////////////
   checkEdges(i) {
     if (this.position.x > width) {
       this.position.x = width;
@@ -121,6 +117,7 @@ class chocaObjetos  {
       this.velocity.x *= -1;
       this.position.x = 0;
     }//fin if (this.position.x >
+
     if (this.position.y > height) {
       this.velocity.y *= -1;
       this.position.y = height;
@@ -128,7 +125,9 @@ class chocaObjetos  {
       this.velocity.y *= -1;
       this.position.y = 0;
     }//fin if (this.position.y > heig
+
   }//fin checkEdges(i)
+
 
 }// fin de class chocaObjetos
 
@@ -144,3 +143,27 @@ function seTocanObjetos ( x1, y1, x2, y2 , radio1, radio2 ) {
   return  distancia ;
 
 }//fin de function seTocanObjetos
+
+
+
+
+
+  // //Método prekk_muestraObjetospara ....
+  // /////////////////////////////////////////////////////////////
+  // kk_muestraObjetos(miChocaObjetos){ 
+
+
+  //   for(let i=0; i < miChocaObjetos.arrObjetos.length; i++) {  
+         
+  //     stroke(0,255, 0);
+    
+  //     ellipse(  miChocaObjetos.arrObjetos[i].x, 
+  //               miChocaObjetos.arrObjetos[i].y, 
+  //               miChocaObjetos.arrObjetos[i].radiox2, 
+  //               miChocaObjetos.arrObjetos[i].radiox2);
+
+
+  //   }//fin for(let i=0; i < miChocaObjetos.arrObjetos.length; 
+
+
+  // }//fin muestraObjetos
